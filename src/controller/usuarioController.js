@@ -18,7 +18,7 @@ export function loginUser(login,senha){
                 console.log("Senha Incorreta")
             }
             //Retorna o tipo de erro no console DEBUG
-            console.warn(error);
+            console.error(error);
         }).then(() => {
             //Verifica se realmente foi logado e executa o bloco a seguir
             if(getUserInfo()){
