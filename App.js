@@ -4,31 +4,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import database, {userAuth} from './src/config/firebaseConfig'
 import {loginUser,logoutUser,addUser,getUserInfo} from './src/controller/usuarioController';
+import {getFiliais} from './src/controller/filialController'
 export default function App() {
     const [userinfo, setuserinfo] = useState(getUserInfo())
-    filial = {
-      enderecoFilial:'Rua Tal',
-      nomeFilial:"Principal",
-      estoque:{
-        1:{
-          produtoId:'OkYt5yY29qaHKJJo83if',
-          quantidade: 10
-        },
-        2:{
-          produtoId:'OkYt5yY29qaHKJJo83if',
-          quantidade: 20
-        }
-      }
-    }
-    
-    
-    
+    filiais = getFiliais()
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={()=>{
           
-          loginUser("lucas1999mendes@gmail.com","12s3456")
-          console.log(getUserInfo())
+          console.log(filiais)
       }}>
       <Text>Conectarr
         {JSON.stringify(getUserInfo())
