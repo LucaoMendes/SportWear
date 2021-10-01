@@ -1,5 +1,9 @@
-import { userAuth } from "../config/firebaseConfig";
+import database, { userAuth } from "../config/firebaseConfig";
 //UsuarioController funções para o controle do DataAccess
+
+
+//Usuario Collection
+const usuarios = database.collection('usuarios')
 /**
  * LoginUser -- Verifica a veracidade das informações passadas por parametros
  * e efetua o login
@@ -56,6 +60,39 @@ export function getUserInfo(){
 }
 
 
-export function addUser(login,senha,telefone){
+/**
+ * Adicionar o usuário ao banco de dados
+ * @param {string} email 
+ * @param {string} senha 
+ * @param {string} nome 
+ * @param {string} telefone 
+ * @param {number} nvAuth 
+ */
+export function addUser(email,senha,nome,telefone,nvAuth){
+    userAuth.createUserWithEmailAndPassword(email,senha)
+    .catch((error)=>{
+        console.warn(error,error.code)
+        if(error.code === "auth/email-already-in-use")
+            alert("Esse email já esta em uso")
+        if(error.code === "auth/invalid-email")
+            alert("Esse email é invalido")
+        if(error.code === "auth/weak-password")
+            alert("A senha precisa ter no minimo 6 digitos")
+    })
+    .then(
+        (userCredentials)=>{
+            if(userCredentials){
+                usuarios.add({
+                    uid : userCredentials.user.uid,
+                    nome : nome,
+                    email : email,
+                    telefone : telefone,
+                    nvAuth : nvAuth
+                }).then(
+                    alert("usuario criado com sucesso ID: " + userCredentials.user.uid)
+                )
+            }
+        }
+        )
 
 }
