@@ -4,7 +4,7 @@ import database from '../config/firebaseConfig'
 
 
 //Collection das filiais
-filiais = database.collection('filiais')
+const filiais = database.collection('filiais')
 
 
 /**
