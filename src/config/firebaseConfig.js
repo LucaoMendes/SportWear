@@ -9,10 +9,24 @@ const firebaseConfig = {
   messagingSenderId: "590232519794",
   appId: "1:590232519794:web:9458209fb090a360b2aeeb",
   measurementId: "G-642HNLG5TM"
-};
+}
   // Initialize Firebase
-firebase.initializeApp(firebaseConfig)
-firebase.firestore().settings({ experimentalForceLongPolling: true })
+const apps = firebase.apps
+initialized = false
+apps.forEach(app => {
+  if(app.name == "[DEFAULT]")
+    initialized = true
+})
+if(!initialized){
+  firebase.initializeApp(firebaseConfig)
+  firebase.firestore().settings({ experimentalForceLongPolling: true })
+  console.log("[FIREBASE] APP [DEFAULT] Inicializado")
+  console.log("[FIREBASE] {FIRESTORE} Inicializado")
+}else{
+  console.warn("[FIREBASE] APP [DEFAULT] Já foi inicializado")
+}
+  
+
 
 const database = firebase.firestore()
 export const userAuth = firebase.auth()
