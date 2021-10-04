@@ -1,6 +1,9 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
+
+//Pages
 import Login from '../pages/login'
+import Cadastro from '../pages/cadastro';
 import DrawerNavigation from "./DrawerNavigation"
 const Stack = createStackNavigator()
 
@@ -19,7 +22,7 @@ export default function StackPrimario(){
           />
           <Stack.Screen
             name="Cadastro"
-            component={}
+            component={Cadastro}
             options={{headerShown:false}}
             />
 

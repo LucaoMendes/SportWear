@@ -43,12 +43,13 @@ export default function Login({navigation}){
                         <TextInput 
                         mode='outlined'
                         label="Senha"
-                        
+                        secureTextEntry
                         onChangeText={senha => setSenha(senha)}
                         value={senha}
                         />
                         <TouchableOpacity 
-                        style={{alignItems:'center'}}>
+                        style={{alignItems:'center'}}
+                        onPress={()=>navigation.navigate("Cadastro")}>
                             <Text>Não possui conta? Cadastre-se Aqui</Text>
                         </TouchableOpacity>
                         <Button 

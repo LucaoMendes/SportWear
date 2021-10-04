@@ -33,7 +33,6 @@ export function loginUser(login,senha){
             }
         });
     }else{
-        alert("Você ja está logado")
             return(true)
     }
 }
@@ -75,12 +74,17 @@ export function addUser(email,senha,nome,telefone,nvAuth){
     userAuth.createUserWithEmailAndPassword(email,senha)
     .catch((error)=>{
         console.warn(error,error.code)
-        if(error.code === "auth/email-already-in-use")
+        if(error.code === "auth/email-already-in-use"){
             alert("Esse email já esta em uso")
-        if(error.code === "auth/invalid-email")
+            return(false)
+        }else if(error.code === "auth/invalid-email"){
             alert("Esse email é invalido")
-        if(error.code === "auth/weak-password")
+            return(false)
+        }else if(error.code === "auth/weak-password"){
             alert("A senha precisa ter no minimo 6 digitos")
+            return(false)
+        }
+            
     })
     .then(
         (userCredentials)=>{
@@ -94,6 +98,7 @@ export function addUser(email,senha,nome,telefone,nvAuth){
                 }).then(
                     alert("usuario criado com sucesso ID: " + userCredentials.user.uid)
                 )
+                return(true)
             }
         }
         )
