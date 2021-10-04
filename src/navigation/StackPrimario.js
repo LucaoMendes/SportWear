@@ -15,8 +15,13 @@ export default function StackPrimario(){
           <Stack.Screen
             name="DrawerNavigation"
             component={DrawerNavigation}
-            options={{headerShown=false}} 
+            options={{headerShown:false}} 
           />
+          <Stack.Screen
+            name="Cadastro"
+            component={}
+            options={{headerShown:false}}
+            />
 
         </Stack.Navigator>
     )

@@ -8,13 +8,23 @@ import {
 } from 'react-native-paper'
 import styles from "./style";
 import {useFonts} from 'expo-font'
+import { loginUser } from "../../controller/usuarioController";
+
 export default function Login({navigation}){
     const [usuario, setUsuario] = React.useState(null)
     const [senha, setSenha] = React.useState(null)
     let [fontsLoaded] = useFonts({
         'quicksand': require('../../assets/fonts/Quicksand-Light.ttf'),
       });
-
+    function logar(){
+        if(usuario == null || usuario=="" || senha == null || senha ==""){
+            alert("Você precisa preencher todos os campos")
+        }else{
+            if(loginUser(usuario,senha)){
+                navigation.replace("DrawerNavigation")
+            }
+        }
+    }
     return(
         <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()} style={{height:'100%'}}>
             <View style={styles.container}>
@@ -45,7 +55,7 @@ export default function Login({navigation}){
                         style={styles.btnEntrar}
                         labelStyle={styles.btnEntrarContent}
                         mode="contained" 
-                        onPress={()=>navigation.navigate("NavigationDrawer")}>
+                        onPress={()=>logar()}>
                             Entrar
                         </Button>
                 </View>

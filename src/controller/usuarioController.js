@@ -20,6 +20,7 @@ export function loginUser(login,senha){
                 //Acrescentar funcionamento de erro
                 alert("Senha incorreta")
                 console.log("Senha Incorreta")
+                return(false)
             }
             //Retorna o tipo de erro no console DEBUG
             console.error(error);
@@ -28,10 +29,12 @@ export function loginUser(login,senha){
             if(getUserInfo()){
                 console.log('User signed in!')
                 alert("LOGADO")
+                return(true)
             }
         });
     }else{
         alert("Você ja está logado")
+            return(true)
     }
 }
 
