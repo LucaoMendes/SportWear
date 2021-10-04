@@ -43,6 +43,7 @@ export default function Login({navigation}){
                         <TextInput 
                         mode='outlined'
                         label="Senha"
+                        textContentType='password'
                         secureTextEntry
                         onChangeText={senha => setSenha(senha)}
                         value={senha}

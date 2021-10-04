@@ -18,7 +18,6 @@ export function loginUser(login,senha){
             //Erros no login
             if(error.code === 'auth/wrong-password'){
                 //Acrescentar funcionamento de erro
-                alert("Senha incorreta")
                 console.log("Senha Incorreta")
                 return(false)
             }
@@ -28,7 +27,6 @@ export function loginUser(login,senha){
             //Verifica se realmente foi logado e executa o bloco a seguir
             if(getUserInfo()){
                 console.log('User signed in!')
-                alert("LOGADO")
                 return(true)
             }
         });
@@ -46,7 +44,6 @@ export function logoutUser(){
     if(getUserInfo()){
         userAuth.signOut().then(() => {
             console.log('User signed out!')
-            alert("DESLOGADO") 
         });
     }else{
         alert("Você não está logado")
@@ -71,18 +68,16 @@ export function getUserInfo(){
  * @param {number} nvAuth 
  */
 export function addUser(email,senha,nome,telefone,nvAuth){
+    var retorno = false;
     userAuth.createUserWithEmailAndPassword(email,senha)
     .catch((error)=>{
         console.warn(error,error.code)
         if(error.code === "auth/email-already-in-use"){
             alert("Esse email já esta em uso")
-            return(false)
         }else if(error.code === "auth/invalid-email"){
             alert("Esse email é invalido")
-            return(false)
         }else if(error.code === "auth/weak-password"){
             alert("A senha precisa ter no minimo 6 digitos")
-            return(false)
         }
             
     })
@@ -97,10 +92,12 @@ export function addUser(email,senha,nome,telefone,nvAuth){
                     nvAuth : nvAuth
                 }).then(
                     alert("usuario criado com sucesso ID: " + userCredentials.user.uid)
+                ).finally(
+                    retorno = true
                 )
-                return(true)
+                
             }
         }
-        )
-
+    )
+        return retorno
 }
