@@ -1,6 +1,4 @@
 import database, { userAuth } from "../config/firebaseConfig";
-import {useNavigation} from '@react-navigation/native'
-import React from "react";
 //UsuarioController funções para o controle do DataAccess
 
 //Usuario Collection
@@ -12,7 +10,8 @@ const usuarios = database.collection('usuarios')
  * @param {string} senha 
  * @param {NAVIGATION} navigation
  */
-export const loginUser = async (email,senha,{navigation}) => {
+export async function loginUser(email,senha,{navigation}){
+    console.log("[USUARIO-CONTROL]","-------- Login User --------")
     console.log("[USUARIO-CONTROL]"," Solicitação de login usuário : \" "+email+" \" ")
     try{
         let response = await userAuth.signInWithEmailAndPassword(email,senha).catch(error=>{
@@ -32,6 +31,7 @@ export const loginUser = async (email,senha,{navigation}) => {
     } catch (e){
         console.error("[USUARIO-CONTROL]",e.message)
     }
+    console.log("[USUARIO-CONTROL]","x-x-x-x- Login User FIM  -x-x-x-x")
 }
 
 
@@ -41,9 +41,12 @@ export const loginUser = async (email,senha,{navigation}) => {
 * LogoutUser
 * Desconecta a atual conexão
 *
-* @param {NAVIGATION} navigation 
+* @param {NAVIGATION} navigation
+* @param {Array} params
 */
 export async function logoutUser({navigation},params) {
+    console.log("[USUARIO-CONTROL]","-------- Logout User --------")
+    console.log("[USUARIO-CONTROL]","Verificando se tem alguma sessão logada")
     if(isLoggedIn()){
         await userAuth
             .signOut()
@@ -54,15 +57,16 @@ export async function logoutUser({navigation},params) {
     }else{
         console.log("[USUARIO-CONTROL]"," Solicitação de logout sem usuário conectado")
     }
-        
+    console.log("[USUARIO-CONTROL]","x-x-x-x- Logout User FIM  -x-x-x-x")  
 }
 
 
 /**
- * 
- * @returns JSON com as informações do atual usuario conectado
+ * Busca as informações do usuário conectado no banco de dados
+ * @returns JSON
  */
 export async function getUserInfo(){
+    console.log("[USUARIO-CONTROL]","-------- GetUserInfo --------")
     console.log("[USUARIO-CONTROL]"," Obtendo informações do usuário")
     var user = null
     console.log("[USUARIO-CONTROL]"," Variaveis inicializadas")
@@ -70,7 +74,7 @@ export async function getUserInfo(){
         console.log("[USUARIO-CONTROL]"," Login Confirmado")
         user = 
              await usuarios
-            .where('uid',"==",isLoggedIn() ? userAuth.currentUser.uid : null)
+            .where('uid',"==",userAuth.currentUser.uid)
             .get()
             .then(querySnapshot =>{
                 console.log("[USUARIO-CONTROL]"," Informações do usuario obtidas")
@@ -86,34 +90,45 @@ export async function getUserInfo(){
             })
             console.log("[USUARIO-CONTROL]  Informações:", user)
     }
+    console.log("[USUARIO-CONTROL]","x-x-x-x- GetUserInfo FIM  -x-x-x-x")
     return user
 }
 
-export const isLoggedIn = ()=>{
+/**
+ * Faz a verificação de usuário logado ou não
+ * @returns boolean
+ */
+export function isLoggedIn(){
+    console.log("[USUARIO-CONTROL]","-------- isLoggedIn --------")
     console.log("[USUARIO-CONTROL]"," Verificação de Usuário Logado")
     if(userAuth.currentUser != null){
         console.log("[USUARIO-CONTROL]"," Logado, UID: "+ userAuth.currentUser.uid)
+        console.log("[USUARIO-CONTROL]","x-x-x-x- isLoggedIn FIM  -x-x-x-x")
         return true
     }else{
         console.log("[USUARIO-CONTROL]","Sem login confirmado")
+        console.log("[USUARIO-CONTROL]","x-x-x-x- isLoggedIn FIM  -x-x-x-x")
         return false
     }
+    
 }
 
 
 /**
  * Adicionar o usuário ao banco de dados
+ * @param {NAVIGATION} navigation
  * @param {string} email 
  * @param {string} senha 
  * @param {string} nome 
  * @param {string} telefone 
  * @param {number} nvAuth 
  */
-export function addUser({navigation},email,senha,nome,telefone,nvAuth){
+export async function addUser({navigation},email,senha,nome,telefone,nvAuth){
+    console.log("[USUARIO-CONTROL]","-------- AddUser --------")
     console.log("[USUARIO-CONTROL]"," Cadastro de usuário")
     console.log("[USUARIO-CONTROL]"," Inicializando variaveis")
     var retorno = false;
-    userAuth.createUserWithEmailAndPassword(email,senha)
+    await userAuth.createUserWithEmailAndPassword(email,senha)
     .catch((error)=>{
         console.warn("[USUARIO-CONTROL] " + error,error.code)
         if(error.code === "auth/email-already-in-use"){
@@ -141,5 +156,6 @@ export function addUser({navigation},email,senha,nome,telefone,nvAuth){
             }
         }
     )
+    console.log("[USUARIO-CONTROL]","x-x-x-x- AddUser FIM  -x-x-x-x")
         return retorno
 }
