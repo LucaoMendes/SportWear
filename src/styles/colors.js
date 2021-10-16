@@ -1,5 +1,6 @@
 const colors = {
     primaryBackgroundAppColor: "#EFEFEF",
+    secondaryBackgroundAppColor:"#FFF",
     //Header
     backgroundHeaderColor:"#121212",
     textHeaderColor:"#EFEFEF",
