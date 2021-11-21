@@ -1,7 +1,7 @@
 import React from "react";
 import { FlatList, View } from "react-native";
 import Produtos from "../../controller/produtosController";
-import ListItem from "../ListItem";
+import ListItem from "../ListItemProdutos";
 export default function ListForm({navigation}){
     var produtos = Produtos
     var renderItem = ({ item }) => {

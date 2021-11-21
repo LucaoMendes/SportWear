@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from 'react'
 import { Text, View } from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { getUserInfo , logoutUser } from '../../controller/usuarioController';
-import ListForm from '../../components/ListForm';
+import ListForm from '../../components/ListFormProdutos';
 import styles from './style'
 import Produtos from '../../controller/produtosController';
 
