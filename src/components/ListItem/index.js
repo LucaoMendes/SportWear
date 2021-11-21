@@ -17,12 +17,12 @@ export default function ListItem({item,navigation}){
                 <Text style={styles.produtoListaPrecoText}>R${item.valorVenda},00</Text>
             </View>
             <View style={styles.produtoListaBtnView}>
-                <View style={styles.produtoListaBtnCarrinho}>
-                    <FontAwesome name="cart-plus" size={15} color="white" />
-                </View>
-                <View style={styles.produtoListaBtnInfo}>
-                    <FontAwesome5 name="info" size={15} color="white" />
-                </View>
+                    <TouchableOpacity style={styles.produtoListaBtnCarrinho}>
+                        <FontAwesome name="cart-plus" size={15} color="white" />
+                    </TouchableOpacity>
+                <TouchableOpacity style={styles.produtoListaBtnInfo}>
+                        <FontAwesome5 name="info" size={15} color="white" />
+                </TouchableOpacity>
             </View>
         </TouchableOpacity>
     )

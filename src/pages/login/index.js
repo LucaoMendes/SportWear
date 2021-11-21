@@ -14,14 +14,14 @@ export default function Login({route , navigation}){
     const [usuario, setUsuario] = React.useState(null)
     const [senha, setSenha] = React.useState(null)
     const [visibleSnack , setVisibleSnack] = React.useState(false)
-    const textSnack = "Cadastro efetuado com sucesso!"
     const onToggleSnackBar = ()=> setVisibleSnack(!visibleSnack)
     const onDismissSnackBar = () => setVisibleSnack(false)
     
     
     useEffect(()=>{
-        if(route.params.cadastro)
-            onToggleSnackBar()
+        if(route.params)
+            if(route.params.cadastro)
+                onToggleSnackBar()
     },[route])
     
     let [fontsLoaded] = useFonts({

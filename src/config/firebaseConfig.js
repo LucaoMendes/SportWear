@@ -12,7 +12,7 @@ const firebaseConfig = {
 }
   // Initialize Firebase
 const apps = firebase.apps
-initialized = false
+var initialized = false
 apps.forEach(app => {
   if(app.name == "[DEFAULT]")
     initialized = true

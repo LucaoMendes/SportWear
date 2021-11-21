@@ -16,15 +16,13 @@ export default function Cadastro({navigation}){
     const [senha, setSenha] = React.useState(null)
     const [nome, setNome] = React.useState(null)
     const [telefone,setTelefone] = React.useState(null)
-
     
+
     function cadastrar(){
         if(usuario == null || usuario=="" || senha == null || senha =="" || nome == null || nome =="" || telefone == null || telefone == ""){
             alert("Você precisa preencher todos os campos")
         }else{
-            if(addUser(usuario,senha,nome,telefone,0)){
-                navigation.navigate("Login")
-            }
+            addUser({navigation},usuario,senha,nome,telefone,0)
         }
     }
     return(
@@ -79,6 +77,7 @@ export default function Cadastro({navigation}){
                             Cadastrar
                         </Button>
                 </View>
+                
             </View>
         </TouchableWithoutFeedback>
     )

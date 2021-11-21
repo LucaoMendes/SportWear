@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         borderRadius:13,
         marginHorizontal:"1.66%",
         marginTop:6,
-        marginBottom:6,
+        marginBottom:10,
         backgroundColor:colors.secondaryBackgroundAppColor,
         shadowColor:"#000",
             shadowOffset:{
@@ -23,11 +23,12 @@ const styles = StyleSheet.create({
         alignItems:'center',
         width:"100%",
         height:"56.92%",
+        borderTopRightRadius:13,
+        borderTopLeftRadius:13,
         backgroundColor:"#000"
     },
     produtoListaTitulo:{
         alignItems:'center',
-        backgroundColor:'grey',
         width:'100%',
         height: 15,
     },
@@ -37,7 +38,6 @@ const styles = StyleSheet.create({
     produtoListaPreco:{
         width:45,
         height:15,
-        backgroundColor:'red',
         position:'relative',
         alignSelf:'flex-end',
         right:4,
@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
         fontSize:11,
     },
     produtoListaBtnView:{
-        backgroundColor:'grey',
         flexDirection:'row',
         alignSelf:'flex-end',
         bottom:-10
@@ -60,8 +59,6 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         backgroundColor:'black',
-        
-        padding:5,
         borderRadius:100
     },
     produtoListaBtnInfo:{
@@ -71,9 +68,8 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         backgroundColor:'black',
-        
-        padding:5,
-        borderRadius:100
+        borderRadius:100,
+        marginHorizontal:-2
     }
 })
 
