@@ -29,7 +29,7 @@ export default function Cadastro({navigation}){
         <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()} style={{height:'100%'}}>
             <View style={styles.container}>
                 <View style={styles.logoBox}>
-                <Image source={require('../../assets/logo.png')} style={styles.logo}/>
+                <Image source={require('../../assets/imgs/logo.png')} style={styles.logo}/>
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput 

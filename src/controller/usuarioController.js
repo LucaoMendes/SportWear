@@ -69,6 +69,7 @@ export async function getUserInfo(){
     console.log("[USUARIO-CONTROL]","-------- GetUserInfo --------")
     console.log("[USUARIO-CONTROL]"," Obtendo informações do usuário")
     var user = null
+    var userReturn = null
     console.log("[USUARIO-CONTROL]"," Variaveis inicializadas")
     if(isLoggedIn()){
         console.log("[USUARIO-CONTROL]"," Login Confirmado")
@@ -86,12 +87,12 @@ export async function getUserInfo(){
                 }))
                 console.log("[USUARIO-CONTROL]"," Informações do banco de dados obtidas")
                 console.log("[USUARIO-CONTROL]"," Informações gerais do usuário:")
-                return data
+                return data[0]
             })
             console.log("[USUARIO-CONTROL]  Informações:", user)
     }
     console.log("[USUARIO-CONTROL]","x-x-x-x- GetUserInfo FIM  -x-x-x-x")
-    return user
+    return user[0]
 }
 
 /**

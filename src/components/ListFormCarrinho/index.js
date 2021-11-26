@@ -1,11 +1,12 @@
 import React from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, View , ScrollView } from "react-native";
 import Produtos from "../../controller/produtosController";
+import ListItem from "../ListItemCarrinho";
 import styles from "../ListItemCarrinho/style";
-import ListItem from "../ListItemProdutos";
-export default function ListForm({navigation},isCarrinho){
+
+export default function ListForm({navigation}){
     var produtos = Produtos
-    var numCols = 3
+    var numCols = 1
     
     var renderItem = ({ item }) => {
         return (
@@ -14,13 +15,13 @@ export default function ListForm({navigation},isCarrinho){
       }
 
     return(
-        <View style={{height:"100%"}}>
-            <FlatList
+        <FlatList
             contentContainerStyle={{height:'100%'},styles.containerItem}
             data={produtos}
             renderItem={renderItem}
             keyExtractor={item => item.id}
-            numColumns={numCols} />
-        </View>
+            numColumns={numCols}
+            scrollEnabled={true}/>
+        
     )
 }

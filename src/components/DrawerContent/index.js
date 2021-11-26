@@ -18,40 +18,12 @@ function Hr(){
 
 
 export default function DrawerContent({navigation}){
-    var cargo = ''
-    const [user,setUser] = React.useState(null)
-    React.useEffect(()=>{
-        const putUser = async()=>{
-            var u = await getUserInfo()
-            setUser(u)
-        }
-        putUser()
-        
-        
-    },[])
-    
-    switch(user[0].nvAuth){
-        case 0:
-            cargo = ''
-        break;
-        case 1: 
-            cargo = 'Vendedor'
-        break
-        case 2:
-            cargo = 'Gerente'
-        break
-        case 3:
-            cargo = 'Administrador de Software'
-    }
     
     return(
         <DrawerContentScrollView>
             <View  style={styles.headerDrawerContainer}>
             <Avatar rounded size={200} icon={{ name: 'account-circle' }} overlayContainerStyle={styles.avatarUser}/>
-                <View style={styles.userInfoBox}>
-                    <Text style={styles.userInfo}>{user[0].nome}</Text>
-                    <Text style={styles.userInfo}>{cargo}</Text>
-                </View>
+              
             </View>
             <DrawerItem 
                 style={styles.drawerItem}
@@ -60,6 +32,21 @@ export default function DrawerContent({navigation}){
                 icon={()=> <AntDesign name="home" size={24} color="black" />}
                 onPress={()=>{navigation.navigate("InicioApp") }}
                     />    
+            <DrawerItem 
+            style={styles.drawerItem}
+            labelStyle={styles.drawerItemLabel}
+            label="Adicionar Produtos" 
+            icon={()=> <MaterialIcons name="post-add" size={24} color="black" />}
+            onPress={()=>{navigation.navigate("InicioApp") }}
+                />    
+                <DrawerItem 
+            style={styles.drawerItem}
+            labelStyle={styles.drawerItemLabel}
+            label="Adicionar Filiais" 
+            icon={()=> <MaterialIcons name="add-location-alt" size={24} color="black" />}
+            onPress={()=>{navigation.navigate("InicioApp") }}
+                />   
+                
         </DrawerContentScrollView>
     )
 }

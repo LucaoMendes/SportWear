@@ -6,9 +6,15 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column', 
     },
+    boxItens:{
+        width:"50%",
+        height:"100%",
+        flexDirection: 'column'
+    },
     produtoLista:{
-        width:"30%",
-        height:180,
+        width:"96%",
+        height:160,
+        flexDirection: 'row',
         borderRadius:13,
         marginHorizontal:"1.66%",
         marginTop:6,
@@ -25,45 +31,43 @@ const styles = StyleSheet.create({
     },
     produtoListaImagem:{
         alignItems:'center',
-        width:"100%",
-        height:"65%",
-        borderTopRightRadius:13,
+        width:"50%",
+        height:"100%",
         borderTopLeftRadius:13,
+        borderBottomLeftRadius:13,
         backgroundColor:"#000"
     },
     produtoImg:{
-        borderColor:"#000",
-        borderTopLeftRadius:12,
-        borderTopRightRadius:12,
         width:"100%",
         height:"100%",
+        borderTopLeftRadius:12,
+        borderBottomLeftRadius:12,
     },
     produtoListaTitulo:{
         alignItems:'center',
         width:'100%',
         height: 15,
-        bottom:-5
+        top:10,
     },
     produtoListaTituloText:{
-        fontSize:15,
+        fontSize:16,
     },
     produtoListaPreco:{
-        width:45,
+        alignItems:'flex-end',
+        position:'absolute',
+        bottom:10,
+        left:10,
         height:15,
-        position:'relative',
-        alignSelf:'flex-end',
-        right:4,
-        bottom:-5
-
 
     },
     produtoListaPrecoText:{
-        fontSize:12,
+        fontSize:16,
     },
     produtoListaBtnView:{
         flexDirection:'row',
         alignSelf:'flex-end',
-        bottom:-20
+        position:'absolute',
+        bottom:-10
     },
     produtoListaBtnCarrinho:{
         marginHorizontal:5,
@@ -83,7 +87,7 @@ const styles = StyleSheet.create({
         backgroundColor:'black',
         borderRadius:100,
         marginHorizontal:-2
-    },
+    }
 })
 
 export default styles

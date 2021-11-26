@@ -51,7 +51,7 @@ export default function Login({route , navigation}){
                 Cadastro concluido com sucesso!
             </Snackbar>
                 <View style={styles.logoBox}>
-                    <Image source={require('../../assets/logo.png')} style={styles.logo}/>
+                    <Image source={require('../../assets/imgs/logo.png')} style={styles.logo}/>
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput 

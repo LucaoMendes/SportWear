@@ -17,14 +17,6 @@ const styles = StyleSheet.create({
         alignItems:'center',
         width:'100%'
     },
-    avatarUser:{
-        marginTop:-90
-    },
-    userInfoBox:{
-        marginTop:-80,
-        alignItems:"center",
-        
-    },
     userInfo:{
         color:colors.textPrimaryColor
     }

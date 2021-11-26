@@ -22,7 +22,7 @@ export default function InicioApp ({navigation}){
     
     return(
         <View style={styles.container}>
-            <ListForm/>
+            <ListForm navigation={navigation}/>
         </View>
     )
 }
