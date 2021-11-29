@@ -3,7 +3,8 @@ import { Image, Text, TouchableOpacity, View  } from "react-native";
 import styles from "./style";
 import { AntDesign } from '@expo/vector-icons'; 
 import { FontAwesome5 } from '@expo/vector-icons'; 
-export default function ListItem({item,navigation},isCatalogo){
+import CartOper from "../../controller/carrinhoController";
+export default function ListItem({item,navigation,remItem,onToggleSnackBar}){
         return(
             <TouchableOpacity style={styles.produtoLista} >
                 <View style={styles.produtoListaImagem}>
@@ -21,10 +22,14 @@ export default function ListItem({item,navigation},isCatalogo){
                         <Text style={styles.produtoListaPrecoText}>R${item.valorVenda},00</Text>
                     </View>
                     <View style={styles.produtoListaBtnView}>
-                            <TouchableOpacity style={styles.produtoListaBtnCarrinho}>
+                            <TouchableOpacity style={styles.produtoListaBtnCarrinho} onPress={()=>{
+                        remItem(item);
+                        console.log("Removido do carrinho ",item)
+                        
+                    }}>
                             <FontAwesome5 name="trash" size={15} color="white" />
-                            </TouchableOpacity>
-                        <TouchableOpacity style={styles.produtoListaBtnInfo}>
+                            </TouchableOpacity> 
+                        <TouchableOpacity style={styles.produtoListaBtnInfo} >
                                 <FontAwesome5 name="info" size={15} color="white" />
                         </TouchableOpacity>
                     </View>

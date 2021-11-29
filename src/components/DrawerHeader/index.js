@@ -33,7 +33,7 @@ export function drawerOptions(){
        }),
         headerRight: ()=>{return(
             <View style={styles.headerRight}>
-                <TouchableOpacity onPress={()=>{RootNavigation.navigate("Carrinho")}}>
+                <TouchableOpacity onPress={()=>{RootNavigation.navigate("Carrinho",{reload:true})}}>
                     <Feather name="shopping-cart" size={24} style={styles.cartHeaderIcon} />
                 </TouchableOpacity>
             </View>

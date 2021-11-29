@@ -1,5 +1,5 @@
 import React from "react";
-import { createDrawerNavigator , CardStyleInterpolators} from '@react-navigation/drawer'
+import { createDrawerNavigator } from '@react-navigation/drawer'
 
 //Pages
 import Carrinho from "../pages/carrinho";
@@ -10,6 +10,7 @@ import { drawerOptions } from "../components/DrawerHeader";
 import DrawerContent from "../components/DrawerContent";
 import { NavigationContainer } from "@react-navigation/native";
 import { navigationRef } from "../config/RootNavigation";
+import addProdutos from "../pages/addProdutos";
 const Drawer = createDrawerNavigator()
 
 
@@ -21,8 +22,10 @@ export default function DrawerNavigation({navigation}){
         <NavigationContainer independent={true} ref={navigationRef}>
             <Drawer.Navigator
             drawerContent={(props) => <DrawerContent {...props}/>}
-            initialRouteName="Carrinho"
-            
+            initialRouteName="InicioApp"
+            options={{
+                
+            }}
             >
                 <Drawer.Screen 
                     name="InicioApp"
@@ -33,6 +36,11 @@ export default function DrawerNavigation({navigation}){
                 <Drawer.Screen 
                     name="Carrinho"
                     component={Carrinho}
+                    options={drawerOptions()}
+                />
+                <Drawer.Screen 
+                    name="AddProdutos"
+                    component={addProdutos}
                     options={drawerOptions()}
                 />
             </Drawer.Navigator>

@@ -1,10 +1,9 @@
 import React from "react";
 import { Image, Text, TouchableOpacity, View  } from "react-native";
 import styles from "./style";
-import { Foundation } from '@expo/vector-icons'; 
 import { FontAwesome } from '@expo/vector-icons'; 
 import { FontAwesome5 } from '@expo/vector-icons'; 
-export default function ListItem({item,navigation}){
+export default function ListItem({item,navigation,addItem}){
         return(
             <TouchableOpacity style={styles.produtoLista}>
                 <View style={styles.produtoListaImagem}>
@@ -20,10 +19,13 @@ export default function ListItem({item,navigation}){
                     <Text style={styles.produtoListaPrecoText}>R${item.valorVenda},00</Text>
                 </View>
                 <View style={styles.produtoListaBtnView}>
-                        <TouchableOpacity style={styles.produtoListaBtnCarrinho}>
+                        <TouchableOpacity style={styles.produtoListaBtnCarrinho} onPress={()=>{
+                            addItem(item)
+                            console.log("adicionado ao carrinho ",item)
+                        }}>
                             <FontAwesome name="cart-plus" size={15} color="white" />
                         </TouchableOpacity>
-                    <TouchableOpacity style={styles.produtoListaBtnInfo}>
+                    <TouchableOpacity style={styles.produtoListaBtnInfo} >
                             <FontAwesome5 name="info" size={15} color="white" />
                     </TouchableOpacity>
                 </View>
