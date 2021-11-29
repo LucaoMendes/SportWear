@@ -43,6 +43,11 @@ export default function DrawerNavigation({navigation}){
                     component={addProdutos}
                     options={drawerOptions(false)}
                 />
+                <Drawer.Screen 
+                    name="InfoProduto"
+                    component={InfoProduto}
+                    options={drawerOptions(false)}
+                />
             </Drawer.Navigator>
         </NavigationContainer>
     )

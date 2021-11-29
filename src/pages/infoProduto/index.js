@@ -1,7 +1,9 @@
 import React from 'react'
-import { View } from "react-native";
-export default function InfoProduto ({navigation}){
+import { Text, View } from "react-native";
+export default function InfoProduto ({route,navigation}){
     return(
-        <View></View>
+        <View><Text>
+            {JSON.stringify(route.params.item)}
+            </Text></View>
     )
 }

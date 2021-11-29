@@ -2,10 +2,11 @@ import React from "react";
 import { Image, Text, TouchableOpacity, View  } from "react-native";
 import styles from "./style";
 import { FontAwesome } from '@expo/vector-icons'; 
+import {navigate} from '../../config/RootNavigation'
 import { FontAwesome5 } from '@expo/vector-icons'; 
 export default function ListItem({item,navigation,addItem}){
         return(
-            <TouchableOpacity style={styles.produtoLista}>
+            <TouchableOpacity style={styles.produtoLista} onPress={()=>navigation.navigate("InfoProduto",{item:item})}>
                 <View style={styles.produtoListaImagem}>
                     <Image
                         style={styles.produtoImg}
