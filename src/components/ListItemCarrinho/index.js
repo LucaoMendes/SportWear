@@ -20,7 +20,7 @@ export default function ListItem({item,navigation,remItem,onToggleSnackBar}){
                 <View style={styles.produtoListaImagem}>
                     <Image
                         style={styles.produtoImg}
-                        source={item.img}
+                        source={{uri:item.img}}
                     />
                 </View>
 

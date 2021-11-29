@@ -33,10 +33,15 @@ const styles = StyleSheet.create({
         flexDirection:"row"
     },
     nmProd:{
-        width:"70%",
-        marginRight:"2.5%"
+        marginRight:'2.5%',
+        width:'47.5%',
     },
-    pcProd:{
+    precoCompProd:{
+        width:"25%",
+        marginRight:"2.5%",
+        marginLeft:"2.5%"
+    },
+    precoVenProd:{
         width:"25%",
         marginLeft:"2.5%"
     },
@@ -58,8 +63,17 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.23,
         shadowRadius: 2.62,
         elevation:4,
-        
-        
     },
+    mcProd:{
+        marginLeft:'2.5%',
+        width:'47.5%',
+    },
+    ctProd:{
+        marginRight:'2.5%',
+        width:'40%',
+    },
+    btn:{
+        backgroundColor:colors.btnEntrarBackgroundColor
+    }
 });
 export default styles

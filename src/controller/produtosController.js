@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import database from "../config/firebaseConfig";
-
+import { storage } from "../config/firebaseConfig";
 
     
 /* const Produtos = [
@@ -122,7 +122,7 @@ import database from "../config/firebaseConfig";
 
 */
 
-const Produtos = () => {
+const Produtos =  (item = null,oper = null) => {
     const [ produtos , setProdutos] = useState([])
     const list = []
     const getProdutos = () =>{
@@ -147,8 +147,42 @@ const Produtos = () => {
     useEffect(()=>{
       getProdutos()
     },[])
+    
+    if(oper == null){
+        return produtos
+    }
   
-  
-  return produtos
   }
-export default Produtos
+  export default Produtos
+
+  export async function addProduto(nmProduto,marca,categoria,valorCusto,valorVenda,img){
+    console.log("[PRODUTO-CONTROL]","-------- AddProduto --------")
+    console.log("[PRODUTO-CONTROL]"," Cadastro de produto")
+    console.log("[PRODUTO-CONTROL]"," Inicializando variaveis")
+    var retorno = false;
+    await database.collection("produtos")
+                  .add({
+                    nomeProduto: nmProduto,
+                    marca:marca,
+                    categoria:categoria,
+                    valorCusto:valorCusto,
+                    valorVenda:valorVenda,
+                    img:img
+                  })
+                  .then(()=>{
+                    retorno = true
+                    console.log("Produto adicionado")
+                  }).catch((error)=>{
+                    retorno = false
+                    console.warn("[PRODUTO-CONTROL] " + error,error.code)
+                  })
+    console.log("[PRODUTO-CONTROL]","x-x-x-x- AddProduto FIM  -x-x-x-x")
+        return retorno
+
+        
+}
+
+export function getNextId(){
+  database.collection('categorias').get().then(snap=>{size = snap.size})
+  return ++size
+}

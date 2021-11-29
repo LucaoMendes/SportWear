@@ -9,14 +9,12 @@ import Produtos from '../../controller/produtosController';
 
 export default function InicioApp ({navigation}){
     const [user,setUser] = React.useState(null)
-    const [produtos, setProdutos] = React.useState(null)
     React.useEffect(()=>{
         const putUser = async()=>{
             var u = await getUserInfo()
             setUser(u)
         }
         putUser()
-        console.log(Produtos)
     },[])
 
     

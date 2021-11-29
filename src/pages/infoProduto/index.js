@@ -17,7 +17,7 @@ export default function InfoProduto ({route,navigation}){
         <View style={styles.container}>
             
             <View style={styles.imageBox}>
-                <Image style={styles.image} source={item.img}/>
+                <Image style={styles.image} source={{uri:item.img}}/>
                 <View style={styles.productCategoView}>
                 <Text style={styles.productCategoText}>
                     {item.categoria}

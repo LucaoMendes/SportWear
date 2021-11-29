@@ -20,7 +20,7 @@ export default function ListItem({item,navigation,addItem}){
                 <View style={styles.produtoListaImagem}>
                     <Image
                         style={styles.produtoImg}
-                        source={item.img}
+                        source={{uri:item.img}}
                     />
                 </View>
                 <View style={styles.produtoListaTitulo}>

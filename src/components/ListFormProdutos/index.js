@@ -7,7 +7,6 @@ import {Snackbar} from 'react-native-paper'
 import CartOper from "../../controller/carrinhoController";
 export default function ListForm({navigation}){
     var produtos = Produtos();
-    console.log(produtos)
     var numCols = 3
     const [refresh, setRefresh] = useState(false);
     const [visibleSnack , setVisibleSnack] = React.useState(false)

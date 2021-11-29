@@ -1,6 +1,4 @@
 import firebase from "firebase"
-import 'firebase/storage'
-
 const firebaseConfig = {
   apiKey: "AIzaSyD_-pXqm3-AzVn3dqYHqodfzRoa_vZiNhI",
   authDomain: "sportwear-b8b42.firebaseapp.com",
@@ -30,6 +28,7 @@ if(!initialized){
 
 const database = firebase.firestore()
 export const userAuth = firebase.auth()
+export const storage =  firebase.storage()
 export default database
 
   
