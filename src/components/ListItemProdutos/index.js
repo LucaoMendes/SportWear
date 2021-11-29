@@ -25,9 +25,6 @@ export default function ListItem({item,navigation,addItem}){
                         }}>
                             <FontAwesome name="cart-plus" size={15} color="white" />
                         </TouchableOpacity>
-                    <TouchableOpacity style={styles.produtoListaBtnInfo} >
-                            <FontAwesome5 name="info" size={15} color="white" />
-                    </TouchableOpacity>
                 </View>
             </TouchableOpacity>
         )

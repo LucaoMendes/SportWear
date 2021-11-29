@@ -63,26 +63,18 @@ const styles = StyleSheet.create({
     produtoListaBtnView:{
         flexDirection:'row',
         alignSelf:'flex-end',
-        bottom:-20
+        bottom:-8
     },
     produtoListaBtnCarrinho:{
         marginHorizontal:5,
-        height:28,
-        width:28,
+        right:-5,
+        height:25,
+        width:56,
         justifyContent:'center',
         alignItems:'center',
         backgroundColor:'black',
-        borderRadius:100
-    },
-    produtoListaBtnInfo:{
-        marginHorizontal:5,
-        height:28,
-        width:28,
-        justifyContent:'center',
-        alignItems:'center',
-        backgroundColor:'black',
-        borderRadius:100,
-        marginHorizontal:-2
+        borderBottomRightRadius:12,
+        borderTopLeftRadius:12,
     },
 })
 
