@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     containerItem:{
         display: 'flex',
         flexDirection: 'column', 
+        height:"100%",
     },
     boxItens:{
         width:"50%",

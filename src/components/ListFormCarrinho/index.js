@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList, Text, TouchableOpacity } from "react-native";
 import { cart }from "../../controller/carrinhoController";
 import ListItem from "../ListItemCarrinho";
 import styles from "../ListItemCarrinho/style";
 import {Snackbar} from 'react-native-paper'
+import { View } from "react-native";
+import { AntDesign } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 export default function ListForm({navigation},reload){
     //Controle de Colunas da pagina de carrinho
     const numCols = 1
@@ -53,6 +56,27 @@ export default function ListForm({navigation},reload){
             <ListItem item={item} navigation={navigation} remItem={remItem} />
         );
       }
+    var emptyComp = ()=>{
+        return (
+            <View style={{
+                height:"100%",
+                width:"100%",
+                alignItems:"center",
+                justifyContent:"center",
+                }}> 
+                <AntDesign name="shoppingcart" size={90} color="grey" />
+                <Text>O Seu carrinho está vazio, volte para continuar comprando</Text>
+                <TouchableOpacity style={{
+                    margin:20,
+                    backgroundColor:'grey',
+                    borderRadius:10,
+                    padding:10,
+                }} onPress={()=>{navigation.navigate("InicioApp")}}>
+                   <MaterialCommunityIcons name="backburger" size={30} color="white" />
+                </TouchableOpacity>
+            </View>
+        )
+    }
     return(
         <>
         <Snackbar
@@ -65,8 +89,9 @@ export default function ListForm({navigation},reload){
                 Removido do carrinho
             </Snackbar>
         <FlatList
-            contentContainerStyle={{height:'100%'},styles.containerItem}
+            contentContainerStyle={styles.containerItem}
             data={carrinho}
+            ListEmptyComponent={emptyComp}
             refreshing={refresh}
             renderItem={renderItem}
             keyExtractor={item => item.id}
