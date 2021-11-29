@@ -41,7 +41,7 @@ export default function DrawerNavigation({navigation}){
                 <Drawer.Screen 
                     name="AddProdutos"
                     component={addProdutos}
-                    options={drawerOptions(true)}
+                    options={drawerOptions(false)}
                 />
             </Drawer.Navigator>
         </NavigationContainer>

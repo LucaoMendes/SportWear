@@ -44,7 +44,7 @@ export default function ListForm({navigation}){
                 Adicionado ao carrinho
             </Snackbar>
             <FlatList
-            contentContainerStyle={{height:'100%'},styles.containerItem}
+            contentContainerStyle={styles.containerItem}
             data={produtos}
             renderItem={renderItem}
             keyExtractor={item => item.id}

@@ -63,6 +63,7 @@ export default function ListForm({navigation},reload){
                 width:"100%",
                 alignItems:"center",
                 justifyContent:"center",
+                
                 }}> 
                 <AntDesign name="shoppingcart" size={90} color="grey" />
                 <Text>O Seu carrinho está vazio, volte para continuar comprando</Text>
@@ -89,7 +90,7 @@ export default function ListForm({navigation},reload){
                 Removido do carrinho
             </Snackbar>
         <FlatList
-            contentContainerStyle={styles.containerItem}
+            contentContainerStyle={styles.containerItemCart}
             data={carrinho}
             ListEmptyComponent={emptyComp}
             refreshing={refresh}
