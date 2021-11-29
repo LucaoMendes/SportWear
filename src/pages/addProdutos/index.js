@@ -8,6 +8,7 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import styles from "./style";
 import { View , Keyboard, Image } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
+import storage from '@react-native-firebase/storage';
 
 export default function addProdutos (){ 
     const [selectedImage, setSelectedImage] = React.useState(null);
@@ -18,7 +19,7 @@ export default function addProdutos (){
         let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
     
         if (permissionResult.granted === false) {
-          alert("Permission to access camera roll is required!");
+          alert("Permissão para galeria é necessaria");
           return;
         }
     

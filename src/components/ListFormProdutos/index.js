@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, View } from "react-native";
 import Produtos from "../../controller/produtosController";
 import styles from "../ListItemCarrinho/style";
@@ -6,11 +6,12 @@ import ListItem from "../ListItemProdutos";
 import {Snackbar} from 'react-native-paper'
 import CartOper from "../../controller/carrinhoController";
 export default function ListForm({navigation}){
-    var produtos = Produtos
+    var produtos = Produtos();
+    console.log(produtos)
     var numCols = 3
     const [refresh, setRefresh] = useState(false);
     const [visibleSnack , setVisibleSnack] = React.useState(false)
-
+    
     //ArrowFunctions
     const onToggleSnackBar = ()=> setVisibleSnack(!visibleSnack)
     const onDismissSnackBar = () => setVisibleSnack(false)
@@ -31,7 +32,6 @@ export default function ListForm({navigation}){
             <ListItem item={item} navigation={navigation} addItem={addItem}/>
         );
       }
-
     return(
         <View style={{height:"100%"}}>
             <Snackbar

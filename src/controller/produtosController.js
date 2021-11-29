@@ -1,9 +1,9 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import database from "../config/firebaseConfig";
 
 
     
-const Produtos = [
+/* const Produtos = [
     {
     id:"03232",
     nomeProduto : "Tênis nike sport",
@@ -117,4 +117,38 @@ const Produtos = [
     img: require('../assets/imgs/sapatos/16.jpg'),
     }
 ]
+
+
+
+*/
+
+const Produtos = () => {
+    const [ produtos , setProdutos] = useState([])
+    const list = []
+    const getProdutos = () =>{
+      console.log("-------- Produtos Controller ---------")
+        database.collection("produtos").orderBy('nomeProduto','asc').onSnapshot((query)=>{
+            
+            query.forEach((doc)=>{
+                list.push({...doc.data(), id: doc.id})
+            })
+            setProdutos(list)
+            
+            console.log("******** FIM  PRODUTOS CONTROLLER ********")
+        })
+  
+    }
+    
+  
+    function deleteCategoria(id){
+      database.collection("categorias").doc(id).delete()
+    }
+  
+    useEffect(()=>{
+      getProdutos()
+    },[])
+  
+  
+  return produtos
+  }
 export default Produtos
