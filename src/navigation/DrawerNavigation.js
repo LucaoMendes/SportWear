@@ -22,7 +22,7 @@ export default function DrawerNavigation({navigation}){
         <NavigationContainer independent={true} ref={navigationRef}>
             <Drawer.Navigator
             drawerContent={(props) => <DrawerContent {...props}/>}
-            initialRouteName="InicioApp"
+            initialRouteName="AddProdutos"
             options={{
                 
             }}
@@ -30,18 +30,18 @@ export default function DrawerNavigation({navigation}){
                 <Drawer.Screen 
                     name="InicioApp"
                     component={InicioApp}
-                    options={drawerOptions()}
+                    options={drawerOptions(true)}
                     
                 />
                 <Drawer.Screen 
                     name="Carrinho"
                     component={Carrinho}
-                    options={drawerOptions()}
+                    options={drawerOptions(false)}
                 />
                 <Drawer.Screen 
                     name="AddProdutos"
                     component={addProdutos}
-                    options={drawerOptions()}
+                    options={drawerOptions(true)}
                 />
             </Drawer.Navigator>
         </NavigationContainer>

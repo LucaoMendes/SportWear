@@ -5,7 +5,16 @@ import styles from './style'
 import colors from '../../styles/colors';
 import * as RootNavigation from '../../config/RootNavigation';
 
-export function drawerOptions(){
+export function drawerOptions(showCart){
+    const showCarrinho = ()=>{
+        if(showCart){
+            return(
+                <TouchableOpacity onPress={()=>{RootNavigation.navigate("Carrinho",{reload:true})}}>
+                <Feather name="shopping-cart" size={24} style={styles.cartHeaderIcon} />
+                </TouchableOpacity>
+                )
+        }
+    }
     const config = {
         animation: 'spring',
         config: {
@@ -33,9 +42,7 @@ export function drawerOptions(){
        }),
         headerRight: ()=>{return(
             <View style={styles.headerRight}>
-                <TouchableOpacity onPress={()=>{RootNavigation.navigate("Carrinho",{reload:true})}}>
-                    <Feather name="shopping-cart" size={24} style={styles.cartHeaderIcon} />
-                </TouchableOpacity>
+                {showCarrinho()}
             </View>
         )}
     })
