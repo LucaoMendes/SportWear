@@ -6,6 +6,9 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column', 
     },
+    containerItemCart:{
+        flexGrow: 1, 
+    },  
     boxItens:{
         width:"50%",
         height:"100%",
