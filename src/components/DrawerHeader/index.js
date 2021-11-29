@@ -1,16 +1,23 @@
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { Feather } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons'; 
 import styles from './style'
 import colors from '../../styles/colors';
 import * as RootNavigation from '../../config/RootNavigation';
 
-export function drawerOptions(showCart){
+export function drawerOptions(option){
     const showCarrinho = ()=>{
-        if(showCart){
+        if(option == 0){
             return(
                 <TouchableOpacity onPress={()=>{RootNavigation.navigate("Carrinho",{reload:true})}}>
                 <Feather name="shopping-cart" size={24} style={styles.cartHeaderIcon} />
+                </TouchableOpacity>
+                )
+        }else if(option == 1){
+            return(
+                <TouchableOpacity onPress={()=>{RootNavigation.navigationRef.goBack()}}>
+                    <Ionicons name="return-up-back" size={24} color="white" />
                 </TouchableOpacity>
                 )
         }

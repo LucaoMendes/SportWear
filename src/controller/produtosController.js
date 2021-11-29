@@ -113,7 +113,7 @@ const Produtos = [
     id:"0323c2k",
     nomeProduto : "Tênis niske sport",
     categoria: "Esportivos",
-    valorVenda: 650,
+    valorVenda: 650.05,
     img: require('../assets/imgs/sapatos/16.jpg'),
     }
 ]

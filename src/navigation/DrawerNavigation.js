@@ -30,23 +30,23 @@ export default function DrawerNavigation({navigation}){
                 <Drawer.Screen 
                     name="InicioApp"
                     component={InicioApp}
-                    options={drawerOptions(true)}
+                    options={drawerOptions(0)}
                     
                 />
                 <Drawer.Screen 
                     name="Carrinho"
                     component={Carrinho}
-                    options={drawerOptions(false)}
+                    options={drawerOptions()}
                 />
                 <Drawer.Screen 
                     name="AddProdutos"
                     component={addProdutos}
-                    options={drawerOptions(false)}
+                    options={drawerOptions()}
                 />
                 <Drawer.Screen 
                     name="InfoProduto"
                     component={InfoProduto}
-                    options={drawerOptions(false)}
+                    options={drawerOptions(1)}
                 />
             </Drawer.Navigator>
         </NavigationContainer>

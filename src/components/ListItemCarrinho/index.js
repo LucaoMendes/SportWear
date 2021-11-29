@@ -5,8 +5,18 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import CartOper from "../../controller/carrinhoController";
 export default function ListItem({item,navigation,remItem,onToggleSnackBar}){
+    var valor = parseInt(item.valorVenda).toString() + ',00'
+    var valor2 = parseFloat(item.valorVenda).toString().replace(".",",")
+    
+    const getValor = ()=>{
+        valor2.replace(".",",")
+        if(item.valorVenda%1 == 0)
+            return  valor 
+        else
+            return valor2
+    }
         return(
-            <TouchableOpacity style={styles.produtoLista} >
+            <TouchableOpacity style={styles.produtoLista} onPress={()=>navigation.navigate("InfoProduto",{item:item})}>
                 <View style={styles.produtoListaImagem}>
                     <Image
                         style={styles.produtoImg}
@@ -19,7 +29,7 @@ export default function ListItem({item,navigation,remItem,onToggleSnackBar}){
                         <Text style={styles.produtoListaTituloText}>{item.nomeProduto}</Text>
                     </View>
                     <View style={styles.produtoListaPreco}>
-                        <Text style={styles.produtoListaPrecoText}>R${item.valorVenda},00</Text>
+                        <Text style={styles.produtoListaPrecoText}>R${getValor()}</Text>
                     </View>
                     <View style={styles.produtoListaBtnView}>
                             <TouchableOpacity style={styles.produtoListaBtnCarrinho} onPress={()=>{
