@@ -1,17 +1,15 @@
 import React from "react";
 import {
     TextInput,
-    HelperText,
     Button
 } from 'react-native-paper'
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import styles from "./style";
 import { View , Keyboard, Image } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
-import { utils } from '@react-native-firebase/app';
 import { storage } from "../../config/firebaseConfig";
 import { addProduto } from "../../controller/produtosController"; "../../controller/produtosController";
-import uuid from "uuid";
+
 
 export default function addProdutos (){ 
     const [selectedImage, setSelectedImage] = React.useState(null);

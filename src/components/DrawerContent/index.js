@@ -30,7 +30,7 @@ export default function DrawerContent({navigation}){
                 labelStyle={styles.drawerItemLabel}
                 label="Inicio" 
                 icon={()=> <AntDesign name="home" size={24} color="black" />}
-                onPress={()=>{navigation.navigate("InicioApp") }}
+                onPress={()=>{navigation.navigate("InicioApp",{reload:true}) }}
                     />    
             <DrawerItem 
             style={styles.drawerItem}

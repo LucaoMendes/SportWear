@@ -7,7 +7,7 @@ import styles from './style'
 import Produtos from '../../controller/produtosController';
 
 
-export default function InicioApp ({navigation}){
+export default function InicioApp ({navigation,route}){
     const [user,setUser] = React.useState(null)
     React.useEffect(()=>{
         const putUser = async()=>{
@@ -20,7 +20,7 @@ export default function InicioApp ({navigation}){
     
     return(
         <View style={styles.container}>
-            <ListForm navigation={navigation}/>
+            <ListForm navigation={navigation} reload={route.reload}/>
         </View>
     )
 }

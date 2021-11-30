@@ -122,43 +122,29 @@ import { storage } from "../config/firebaseConfig";
 
 */
 
-const Produtos =  (item = null,oper = null) => {
-    const [ produtos , setProdutos] = useState([])
-    const list = []
-    const getProdutos = () =>{
-      console.log("-------- Produtos Controller ---------")
+export default function Produtos(){
+  const produtos = []
+  console.log("EAI SERA Q APAGOU?",produtos)
+  produtos.splice(0,produtos.length)
+  console.log("EAI SERA Q APAGOU?2",produtos)
+      //console.log("-------- Produtos Controller ---------")
         database.collection("produtos").orderBy('nomeProduto','asc').onSnapshot((query)=>{
             
             query.forEach((doc)=>{
-                list.push({...doc.data(), id: doc.id})
+                produtos.push({...doc.data(), id: doc.id})
             })
-            setProdutos(list)
             
-            console.log("******** FIM  PRODUTOS CONTROLLER ********")
-        })
-  
-    }
-    
-  
-    function deleteCategoria(id){
-      database.collection("categorias").doc(id).delete()
-    }
-  
-    useEffect(()=>{
-      getProdutos()
-    },[])
-    
-    if(oper == null){
+            //console.log("[PRODUTO-CONTROLLER] INFO DATA",produtos)
+           // console.log("******** FIM  PRODUTOS CONTROLLER ********")
+        })     
         return produtos
-    }
-  
+        
   }
-  export default Produtos
 
   export async function addProduto(nmProduto,marca,categoria,valorCusto,valorVenda,img){
-    console.log("[PRODUTO-CONTROL]","-------- AddProduto --------")
-    console.log("[PRODUTO-CONTROL]"," Cadastro de produto")
-    console.log("[PRODUTO-CONTROL]"," Inicializando variaveis")
+    //console.log("[PRODUTO-CONTROL]","-------- AddProduto --------")
+    //console.log("[PRODUTO-CONTROL]"," Cadastro de produto")
+    //console.log("[PRODUTO-CONTROL]"," Inicializando variaveis")
     var retorno = false;
     await database.collection("produtos")
                   .add({
@@ -176,7 +162,7 @@ const Produtos =  (item = null,oper = null) => {
                     retorno = false
                     console.warn("[PRODUTO-CONTROL] " + error,error.code)
                   })
-    console.log("[PRODUTO-CONTROL]","x-x-x-x- AddProduto FIM  -x-x-x-x")
+    //console.log("[PRODUTO-CONTROL]","x-x-x-x- AddProduto FIM  -x-x-x-x")
         return retorno
 
         

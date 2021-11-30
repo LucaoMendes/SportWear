@@ -5,15 +5,15 @@ import styles from "../ListItemCarrinho/style";
 import ListItem from "../ListItemProdutos";
 import {Snackbar} from 'react-native-paper'
 import CartOper from "../../controller/carrinhoController";
-export default function ListForm({navigation}){
-    var produtos = Produtos();
+export default function ListForm({navigation},reload){
+    const [produtos,setProdutos] = useState(null)
     var numCols = 3
     const [refresh, setRefresh] = useState(false);
     const [visibleSnack , setVisibleSnack] = React.useState(false)
-    
     //ArrowFunctions
     const onToggleSnackBar = ()=> setVisibleSnack(!visibleSnack)
     const onDismissSnackBar = () => setVisibleSnack(false)
+    
     const openSnack = ()=>{
         if(visibleSnack){
             setVisibleSnack(true)
@@ -26,6 +26,18 @@ export default function ListForm({navigation}){
         CartOper(2,item)
         openSnack()
     }
+
+    useEffect(()=>{
+        onRefresh()
+        setProdutos(Produtos())
+    },[])
+    
+    const onRefresh = () => {
+        setRefresh(true);
+        setTimeout(()=>{
+            setRefresh(false)
+        },500)
+      };
     var renderItem = ({ item }) => {
         return (
             <ListItem item={item} navigation={navigation} addItem={addItem}/>
@@ -46,6 +58,8 @@ export default function ListForm({navigation}){
             contentContainerStyle={styles.containerItem}
             data={produtos}
             renderItem={renderItem}
+            refreshing={refresh}
+            onRefresh={()=>onRefresh()}
             keyExtractor={item => item.id}
             numColumns={numCols} />
         </View>
