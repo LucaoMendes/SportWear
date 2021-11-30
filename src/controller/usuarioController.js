@@ -11,8 +11,8 @@ const usuarios = database.collection('usuarios')
  * @param {NAVIGATION} navigation
  */
 export async function loginUser(email,senha,{navigation}){
-    console.log("[USUARIO-CONTROL]","-------- Login User --------")
-    console.log("[USUARIO-CONTROL]"," Solicitação de login usuário : \" "+email+" \" ")
+    //console.log("[USUARIO-CONTROL]","-------- Login User --------")
+    //console.log("[USUARIO-CONTROL]"," Solicitação de login usuário : \" "+email+" \" ")
     try{
         let response = await userAuth.signInWithEmailAndPassword(email,senha).catch(error=>{
             //Erros no login
@@ -31,7 +31,7 @@ export async function loginUser(email,senha,{navigation}){
     } catch (e){
         console.error("[USUARIO-CONTROL]",e.message)
     }
-    console.log("[USUARIO-CONTROL]","x-x-x-x- Login User FIM  -x-x-x-x")
+    //console.log("[USUARIO-CONTROL]","x-x-x-x- Login User FIM  -x-x-x-x")
 }
 
 
