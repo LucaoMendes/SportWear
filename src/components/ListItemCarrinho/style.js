@@ -6,6 +6,20 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column', 
     },
+    fab: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
+        backgroundColor:"black",
+      },
+    fabDisabled: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
+        backgroundColor:"grey"
+    },
     containerItemCart:{
         flexGrow: 1, 
     },  

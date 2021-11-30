@@ -37,6 +37,11 @@ export default function ListItem({item,navigation,addItem}){
                             <FontAwesome name="cart-plus" size={15} color="white" />
                         </TouchableOpacity>
                 </View>
+                <View style={styles.categoriaBox}>
+                    <Text style={styles.categoriaText}>
+                        {item.categoria}
+                    </Text>
+                </View>
             </TouchableOpacity>
         )
     

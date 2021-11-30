@@ -6,6 +6,19 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column', 
     },
+    categoriaBox:{
+        position:'absolute',
+        justifyContent:'center',
+        paddingHorizontal:10,
+        height:20,
+        backgroundColor:"grey",
+        borderTopLeftRadius:13,
+        borderBottomRightRadius:13,
+    },  
+    categoriaText:{
+        fontSize:12,
+        color:"white"
+    },
     produtoLista:{
         width:"30%",
         height:180,
@@ -48,11 +61,11 @@ const styles = StyleSheet.create({
         fontSize:15,
     },
     produtoListaPreco:{
-        width:45,
+        width:60,
         height:15,
         position:'relative',
         alignSelf:'flex-end',
-        right:4,
+        right:-2,
         bottom:-5
 
 
