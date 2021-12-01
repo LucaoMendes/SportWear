@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
 
     },
     imgProduto:{
+        justifyContent:'center',
+        alignItems:"center",
         marginTop:10,
         height:"75%",
         width:"80%",

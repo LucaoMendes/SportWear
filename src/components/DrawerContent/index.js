@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { View , Text } from "react-native"
 
 import styles from './style'
@@ -16,14 +16,14 @@ function Hr(){
     )
 }
 
-
 export default function DrawerContent({navigation}){
     
+
     return(
         <DrawerContentScrollView>
             <View  style={styles.headerDrawerContainer}>
             <Avatar rounded size={200} icon={{ name: 'account-circle' }} overlayContainerStyle={styles.avatarUser}/>
-              
+            
             </View>
             <DrawerItem 
                 style={styles.drawerItem}
@@ -39,13 +39,6 @@ export default function DrawerContent({navigation}){
             icon={()=> <MaterialIcons name="post-add" size={24} color="black" />}
             onPress={()=>{navigation.navigate("AddProdutos")  }}
                 />    
-                <DrawerItem 
-            style={styles.drawerItem}
-            labelStyle={styles.drawerItemLabel}
-            label="Adicionar Filiais" 
-            icon={()=> <MaterialIcons name="add-location-alt" size={24} color="black" />}
-            onPress={()=>{navigation.navigate("InicioApp") }}
-                />   
                 
         </DrawerContentScrollView>
     )

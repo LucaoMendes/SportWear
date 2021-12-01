@@ -11,17 +11,18 @@ export default function ListForm({navigation},reload){
     //Controle de Colunas da pagina de carrinho
     const numCols = 1
     const fabLabelLoading = "Carregando..."
-    const fabLabelDefault = "Finalizar Carrinho"
+    const fabLabelDefault = "Finalizar Pedido"
     const fabLabelEmpty = "Carrinho vazio"
-    
+    const fabLabelFinalizando = "Finalizando Pedido..."
     //Variaveis de estado
     const [fabLabel,setFabLabel] = useState(fabLabelDefault)
     const [fabStyle,setFabStyle] = useState(styles.fab)
-    const [fabEnabled, setFabEnabled] = React.useState(false)
+    const [fabEnabled, setFabEnabled] = useState(false)
     const [carrinho,setCarrinho] = useState(cart);
     const [refresh, setRefresh] = useState(false);
+    const [strgSnack,setStrgSnack] = useState("Removido do carrinho")
     const [visibleSnack , setVisibleSnack] = useState(false)
-    
+    const [finalizando,setFinalizando] = useState(false)
     //ArrowFunctions
     const onToggleSnackBar = ()=> setVisibleSnack(!visibleSnack)
     const onDismissSnackBar = () => setVisibleSnack(false)
@@ -46,24 +47,37 @@ export default function ListForm({navigation},reload){
             var i = cart.indexOf(item)
             cart.splice(i,1)
             setCarrinho(cart)
+            setStrgSnack("Removido do carrinho")
             openSnack()
             onRefresh()
         }
     }
-    
+    const onFabPressed = () => {
+        setFinalizando(true)
+        setStrgSnack("Pedido Finalizado")
+        setTimeout(()=>{
+            cart.splice(0,cart.length)
+            setCarrinho(cart)
+            setFinalizando(false)
+            openSnack()
+            onRefresh()
+        },Math.floor(Math.random() * (5000-1500)))
+
+    }
     //Atualização da flatlist
     const onRefresh = () => {
         setCarrinho(cart)
         setRefresh(true);
         setTimeout(()=>{
             setRefresh(false)
+            
         },500)
         verificaFab()
       };
     const getFabIcon = () =>{
-        if(fabEnabled)
+        if(fabEnabled || finalizando) 
             return <MaterialCommunityIcons name="cart-arrow-right" size={24} color="white" />
-        else
+        else 
             return <MaterialCommunityIcons name="cart-off" size={24} color="white" />
     }
     const verificaFab = () =>{
@@ -74,15 +88,26 @@ export default function ListForm({navigation},reload){
             setFabEnabled(true)
             setFabStyle(styles.fab)
         }    
-            
-
-        if(refresh)
+        
+        if(refresh){
             setFabLabel(fabLabelLoading)
-        else
-            if(fabEnabled)
-                setFabLabel(fabLabelDefault)
-            else
-                setFabLabel(fabLabelEmpty)
+            setFabEnabled(false)
+        }else{
+            if(finalizando){
+                setFabLabel(fabLabelFinalizando)
+                setFabEnabled(false)
+            }else{
+                if(carrinho.length == 0){
+                    setFabEnabled(false)
+                    setFabLabel(fabLabelEmpty)
+                }else{
+                    setFabEnabled(true)
+                    setFabLabel(fabLabelDefault)
+                }
+            }
+        }
+
+                
     }
 
     var renderItem = ({ item }) => {
@@ -114,16 +139,7 @@ export default function ListForm({navigation},reload){
     }
     return(
         <>
-        <FAB
-                style={fabStyle}
-                large
-                label={fabLabel}
-                color="white"
-                loading={refresh}
-                disabled={!fabEnabled}
-                icon={()=>getFabIcon()}
-                onPress={() => console.log('Pressed')}
-            />
+        
         <Snackbar
                 duration={1000}
                 visible={visibleSnack}
@@ -131,7 +147,7 @@ export default function ListForm({navigation},reload){
                 style={{borderRadius:10,bottom:10,width:175}}
                 wrapperStyle={{alignContent:'center'}}
                 >
-                Removido do carrinho
+                {strgSnack}
             </Snackbar>
         <FlatList
             contentContainerStyle={styles.containerItemCart}
@@ -143,6 +159,17 @@ export default function ListForm({navigation},reload){
             numColumns={numCols}
             scrollEnabled={true}
            onRefresh={() => onRefresh()}
+            />
+
+            <FAB
+                style={fabStyle}
+                large
+                label={fabLabel}
+                color="white"
+                loading={refresh}
+                disabled={!fabEnabled}
+                icon={()=>getFabIcon()}
+                onPress={()=>onFabPressed()}
             />
         </>
     )

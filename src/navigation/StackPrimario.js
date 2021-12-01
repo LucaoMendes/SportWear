@@ -9,7 +9,7 @@ const Stack = createStackNavigator()
 
 export default function StackPrimario(){
     return(
-      <Stack.Navigator initialRouteName="DrawerNavigation" >
+      <Stack.Navigator initialRouteName="Login" >
           <Stack.Screen
             name="Login"
             component={Login}

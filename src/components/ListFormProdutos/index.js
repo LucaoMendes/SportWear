@@ -41,7 +41,7 @@ export default function ListForm({navigation}){
             
                 const list = []
                 query.forEach((doc)=>{
-                list.push({...doc.data(), id: doc.id})
+                    list.push({...doc.data(), id: doc.id})
                 })
                 setProdutos(list)
                 setRefresh(false)

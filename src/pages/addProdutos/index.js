@@ -9,7 +9,7 @@ import { View , Keyboard, Image } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import { storage } from "../../config/firebaseConfig";
 import { addProduto } from "../../controller/produtosController"; 
-
+import { AntDesign } from '@expo/vector-icons';
 
 export default function addProdutos (){ 
     const [selectedImage, setSelectedImage] = React.useState(null);
@@ -43,7 +43,9 @@ export default function addProdutos (){
 
         function GetImage(){
           if(selectedImage == null){
-            return <Image style={styles.imgProduto} source={require('../../assets/imgs/sapatos/01.jpg')} />
+            return  <View style={styles.imgProduto}>
+                        <AntDesign name="pluscircle" size={200} color="white" />
+                    </View>
           }else{
             //Produtos(selectedImage,1)
             //adicionarImagem()
