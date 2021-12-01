@@ -17,7 +17,6 @@ export default function Login({route , navigation}){
     const onToggleSnackBar = ()=> setVisibleSnack(!visibleSnack)
     const onDismissSnackBar = () => setVisibleSnack(false)
     
-    
     useEffect(()=>{
         if(route.params)
             if(route.params.cadastro)

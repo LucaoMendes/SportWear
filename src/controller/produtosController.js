@@ -122,25 +122,29 @@ import { storage } from "../config/firebaseConfig";
 
 */
 
-export default function Produtos(){
-  const produtos = []
-  console.log("EAI SERA Q APAGOU?",produtos)
-  produtos.splice(0,produtos.length)
-  console.log("EAI SERA Q APAGOU?2",produtos)
+/*
+  //Bug 001 - DEPRECIATED FUNCTION
+export function Produtos(){
+  console.log("ENtrou")
+      var produtos = []
+        var list = []
       //console.log("-------- Produtos Controller ---------")
         database.collection("produtos").orderBy('nomeProduto','asc').onSnapshot((query)=>{
             
             query.forEach((doc)=>{
-                produtos.push({...doc.data(), id: doc.id})
+                list.push({...doc.data(), id: doc.id})
             })
+            produtos = list
             
             //console.log("[PRODUTO-CONTROLLER] INFO DATA",produtos)
            // console.log("******** FIM  PRODUTOS CONTROLLER ********")
         })     
-        return produtos
+        //console.log("Retorno dos produtos",produtos)
         
+        
+      return produtos
   }
-
+*/
   export async function addProduto(nmProduto,marca,categoria,valorCusto,valorVenda,img){
     //console.log("[PRODUTO-CONTROL]","-------- AddProduto --------")
     //console.log("[PRODUTO-CONTROL]"," Cadastro de produto")

@@ -37,7 +37,7 @@ export default function DrawerContent({navigation}){
             labelStyle={styles.drawerItemLabel}
             label="Adicionar Produtos" 
             icon={()=> <MaterialIcons name="post-add" size={24} color="black" />}
-            onPress={()=>{navigation.navigate("AddProdutos") }}
+            onPress={()=>{navigation.navigate("AddProdutos")  }}
                 />    
                 <DrawerItem 
             style={styles.drawerItem}

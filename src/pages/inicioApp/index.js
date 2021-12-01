@@ -20,7 +20,7 @@ export default function InicioApp ({navigation,route}){
     
     return(
         <View style={styles.container}>
-            <ListForm navigation={navigation} reload={route.reload}/>
+            <ListForm navigation={navigation}/>
         </View>
     )
 }

@@ -8,7 +8,7 @@ import styles from "./style";
 import { View , Keyboard, Image } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import { storage } from "../../config/firebaseConfig";
-import { addProduto } from "../../controller/produtosController"; "../../controller/produtosController";
+import { addProduto } from "../../controller/produtosController"; 
 
 
 export default function addProdutos (){ 
@@ -55,13 +55,16 @@ export default function addProdutos (){
 
       async function adicionarImagem(){
         if(verificarCampos()){
-            const uri = await uploadImageAsync(selectedImage.localUri)
-            setUrlUpload(uri)
-            setSelectedImage(null)
+            var local = selectedImage.localUri
             limparCampos()
+            const uri = await uploadImageAsync(local)
+            setUrlUpload(uri)
+            
+            
         }
       }
     function limparCampos(){
+        setSelectedImage(null)
         setNmProduto(null)
         setMarca(null)
         setCategoria(null)
@@ -100,7 +103,6 @@ export default function addProdutos (){
           const imageName = imageNameBefore[imageNameBefore.length - 1];
           const fileRef = storage.ref().child(`imagess/${imageName}`);
           const snapshot = await fileRef.put(blob);
-          setSelectedImage(fileRef)
             // We're done with the blob, close and release it
             blob.close();
 

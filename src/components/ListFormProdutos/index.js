@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, View } from "react-native";
-import Produtos from "../../controller/produtosController";
 import styles from "../ListItemCarrinho/style";
 import ListItem from "../ListItemProdutos";
 import {Snackbar} from 'react-native-paper'
 import CartOper from "../../controller/carrinhoController";
-export default function ListForm({navigation},reload){
-    const [produtos,setProdutos] = useState(null)
+//Bug 001 não usar função PRODUTOS - Futuramente corrigir controladora
+//import { Produtos } from "../../controller/produtosController";
+import database from '../../config/firebaseConfig'
+export default function ListForm({navigation}){
     var numCols = 3
+
+    const [produtos,setProdutos] = useState([])
     const [refresh, setRefresh] = useState(false);
     const [visibleSnack , setVisibleSnack] = React.useState(false)
     //ArrowFunctions
+
     const onToggleSnackBar = ()=> setVisibleSnack(!visibleSnack)
     const onDismissSnackBar = () => setVisibleSnack(false)
     
@@ -21,23 +25,45 @@ export default function ListForm({navigation},reload){
             onToggleSnackBar();
         }
     }
+    
+    
+    const onRefresh = () => {
+        setRefresh(true);
+        getProdutos();
+      };
+
+    const getProdutos = () =>{
+        //Correção BUG 001
+        const subscriber = 
+            database.collection("produtos")
+            .orderBy('nomeProduto','asc')
+            .onSnapshot((query)=>{
+            
+                const list = []
+                query.forEach((doc)=>{
+                list.push({...doc.data(), id: doc.id})
+                })
+                setProdutos(list)
+                setRefresh(false)
+            })
+        return ()=>subscriber()
+    }
+
+
+      //Adição ao carrinho
     const addItem = (item)=>{
         console.log('recebeu item? ',item)
         CartOper(2,item)
         openSnack()
+
     }
 
+      //Efeito de entrada (onMount)
     useEffect(()=>{
         onRefresh()
-        setProdutos(Produtos())
     },[])
+
     
-    const onRefresh = () => {
-        setRefresh(true);
-        setTimeout(()=>{
-            setRefresh(false)
-        },500)
-      };
     var renderItem = ({ item }) => {
         return (
             <ListItem item={item} navigation={navigation} addItem={addItem}/>
@@ -50,8 +76,7 @@ export default function ListForm({navigation},reload){
                 visible={visibleSnack}
                 onDismiss={onDismissSnackBar}
                 style={{borderRadius:10,bottom:10}}
-                wrapperStyle={{alignContent:'center'}}
-                >
+                wrapperStyle={{alignContent:'center'}} >
                 Adicionado ao carrinho
             </Snackbar>
             <FlatList
